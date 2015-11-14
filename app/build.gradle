@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    compile "com.foursquare:snaptoplace:0.5.4"
+    compile "com.foursquare:snaptoplace:0.5.5"
     compile rootProject.ext.supportAppCompat
 
     compile rootProject.ext.glide
