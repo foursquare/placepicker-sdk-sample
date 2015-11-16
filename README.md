@@ -8,6 +8,14 @@ Download
 compile 'com.foursquare:snaptoplace:0.5.5'
 ```
 
+Demo
+----------
+![currentplace](resources/snaptoplace-currentplace.gif)
+<br/>
+![pickplace](resources/snaptoplace-pickplace.gif)
+<br/>
+![changelocation](resources/snaptoplace-changelocation.gif)
+
 Usage
 ----------
 
