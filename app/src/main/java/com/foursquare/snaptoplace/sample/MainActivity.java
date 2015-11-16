@@ -54,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
                 getClosestPlace();
             }
         });
+
+        Button starbucks = (Button) findViewById(R.id.btnStarbucksSearch);
+        starbucks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lookForStarbucks();
+            }
+        });
     }
 
     @Override
@@ -68,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void pickPlace() {
         Intent i = new Intent(this, SnapToPlacePicker.class);
+        startActivityForResult(i, 9001);
+    }
+
+    private void lookForStarbucks() {
+        Intent i = new Intent(this, SnapToPlacePicker.class);
+        i.putExtra(SnapToPlacePicker.EXTRA_QUERY, "starbucks");
         startActivityForResult(i, 9001);
     }
 
