@@ -5,7 +5,7 @@ android {
     buildToolsVersion BUILD_TOOLS
 
     defaultConfig {
-        applicationId "com.foursquare.snaptoplace.sample"
+        applicationId "com.foursquare.placepicker.sample"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    compile "com.foursquare:snaptoplace:0.5.5"
+    compile "com.foursquare:placepicker:0.5.7"
     compile rootProject.ext.supportAppCompat
 
     compile rootProject.ext.glide

@@ -1,4 +1,4 @@
-package com.foursquare.snaptoplace.sample;
+package com.foursquare.placepicker.sample;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.foursquare.lib.types.Venue;
-import com.foursquare.snaptoplace.SnapToPlacePicker;
-import com.foursquare.snaptoplace.SnapToPlaceSDK;
+import com.foursquare.api.types.Venue;
+import com.foursquare.placepicker.PlacePicker;
+import com.foursquare.placepicker.PlacePickerSdk;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,23 +23,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SnapToPlaceSDK.with(new SnapToPlaceSDK.Builder(this)
+        PlacePickerSdk.with(new PlacePickerSdk.Builder(this)
                 .consumer(CONSUMER_KEY, CONSUMER_SECRET)
-                .imageLoader(new SnapToPlaceSDK.ImageLoader() {
+                .imageLoader(new PlacePickerSdk.ImageLoader() {
                     @Override
                     public void loadImage(Context context, ImageView v, String url) {
                         Glide.with(context)
                                 .load(url)
-                                .placeholder(R.drawable.category_none)
+                                .placeholder(com.foursquare.snaptoplace.sample.R.drawable.category_none)
                                 .dontAnimate()
                                 .into(v);
                     }
                 })
                 .build());
 
-        setContentView(R.layout.activity_main);
+        setContentView(com.foursquare.snaptoplace.sample.R.layout.activity_main);
 
-        Button findPlace = (Button) findViewById(R.id.btnPlacePick);
+        Button findPlace = (Button) findViewById(com.foursquare.snaptoplace.sample.R.id.btnPlacePick);
         findPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button currentPlace = (Button) findViewById(R.id.btnCurrentPlace);
+        Button currentPlace = (Button) findViewById(com.foursquare.snaptoplace.sample.R.id.btnCurrentPlace);
         currentPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button starbucks = (Button) findViewById(R.id.btnStarbucksSearch);
+        Button starbucks = (Button) findViewById(com.foursquare.snaptoplace.sample.R.id.btnStarbucksSearch);
         starbucks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == SnapToPlacePicker.PLACE_PICKED_RESULT_CODE) {
-            Venue place = data.getParcelableExtra(SnapToPlacePicker.EXTRA_PLACE);
+        if (resultCode == PlacePicker.PLACE_PICKED_RESULT_CODE) {
+            Venue place = data.getParcelableExtra(PlacePicker.EXTRA_PLACE);
             Toast.makeText(this, place.getName(), Toast.LENGTH_LONG).show();
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -75,18 +75,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void pickPlace() {
-        Intent i = new Intent(this, SnapToPlacePicker.class);
+        Intent i = new Intent(this, PlacePicker.class);
         startActivityForResult(i, 9001);
     }
 
     private void lookForStarbucks() {
-        Intent i = new Intent(this, SnapToPlacePicker.class);
-        i.putExtra(SnapToPlacePicker.EXTRA_QUERY, "starbucks");
+        Intent i = new Intent(this, PlacePicker.class);
+        i.putExtra(PlacePicker.EXTRA_QUERY, "starbucks");
         startActivityForResult(i, 9001);
     }
 
     private void getClosestPlace() {
-        SnapToPlaceSDK.get().getCurrentPlace(new SnapToPlaceSDK.CurrentPlaceResult() {
+        PlacePickerSdk.get().getCurrentPlace(new PlacePickerSdk.CurrentPlaceResult() {
             @Override
             public void success(Venue venue, boolean confident) {
                 Toast.makeText(MainActivity.this,"Got closest place " + venue.getName() + " Confident? " + confident, Toast.LENGTH_LONG).show();

@@ -1,4 +1,4 @@
-package com.foursquare.snaptoplace.sample;
+package com.foursquare.placepicker.sample;
 
 import android.content.Context;
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SnapToPlace Sample</string>
+    <string name="app_name">Place Picker Sample</string>
 
     <string name="pick_place">Pick a place</string>
     <string name="starbucks_search">Look for Starbucks</string>

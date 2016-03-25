@@ -24,7 +24,7 @@ ext {
     glide = 'com.github.bumptech.glide:glide:3.6.1'
     glideOkHttp = 'com.github.bumptech.glide:okhttp-integration:1.3.1'
 
-    def playServicesVersion = "7.8.0"
+    def playServicesVersion = "8.3.0"
     playServicesAds = "com.google.android.gms:play-services-ads:${playServicesVersion}"
     playServicesBase = "com.google.android.gms:play-services-base:${playServicesVersion}"
     playServicesLocation = "com.google.android.gms:play-services-location:${playServicesVersion}"
