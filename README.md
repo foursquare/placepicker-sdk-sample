@@ -5,7 +5,7 @@ An SDK to help developers add a place picker to their app and also quickly acces
 Download
 ----------
 ```groovy
-compile 'com.foursquare:placepicker:0.6.0'
+compile 'com.foursquare:placepicker:0.6.1'
 ```
 
 Demo
